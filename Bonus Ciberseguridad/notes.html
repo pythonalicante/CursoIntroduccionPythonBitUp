@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<meta name="author" content="(Python Alicante)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<section>
+<section id="slide-org0d92317">
+<h2 id="org0d92317">Taller Stego</h2>
+<img src="logo.png" alt="Python Logo" style="background:none; border:none; box-shadow:none;" height="300px" width="300px">
+<h1>Python Alicante</h1>
+</section>
+</section>
+<section>
+<section id="slide-org67214ce">
+<h2 id="org67214ce">Steganography</h2>
+<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+<p>
+La esteganografía (del griego στεγανος steganos, "cubierto" u
+"oculto", y γραφος graphos, "escritura") trata el estudio y aplicación
+de técnicas que permiten ocultar mensajes u objetos, dentro de otros,
+llamados portadores, de modo que no se perciba su existencia.
+</p>
+
+<p>
+Wikipedia
+</p>
+</blockquote>
+</section>
+<section id="slide-orgaa79ace">
+<h3 id="orgaa79ace">LSB</h3>
+<p>
+Least significant bit
+</p>
+<img src="imagenrgb.png" alt="Python Logo" style="background:none; border:none; box-shadow:none;"  width="500px">
+<p>
+**
+</p>
+<img src="bits.jpeg" alt="Python Logo" style="background:none; border:none; box-shadow:none;" width="500px">
+</section>
+</section>
+<section>
+<section id="slide-org62a825d">
+<h2 id="org62a825d">Demo</h2>
+<div class="outline-text-2" id="text-org62a825d">
+</div>
+</section>
+<section id="slide-orgbaaa0b9">
+<h3 id="orgbaaa0b9">Instalación de la librería</h3>
+<div class="org-src-container">
+
+<pre  class="src src-shell">pipenv install Stego
+</pre>
+</div>
+</section>
+<section id="slide-orga2baf54">
+<h3 id="orga2baf54">Guardar texto en la imagen</h3>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> stegano <span style="color: #F0DFAF; font-weight: bold;">import</span> lsb
+
+<span style="color: #DFAF8F;">secret</span> = lsb.hide<span style="color: #DCDCCC;">(</span><span style="color: #CC9393;">"./logo.png"</span>, <span style="color: #CC9393;">"Hello world!"</span><span style="color: #DCDCCC;">)</span>
+secret.save<span style="color: #DCDCCC;">(</span><span style="color: #CC9393;">"./logo-secret.png"</span><span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-org3564437">
+<h3 id="org3564437">Sacar el texto de la imagen</h3>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> stegano <span style="color: #F0DFAF; font-weight: bold;">import</span> lsb
+
+<span style="color: #F0DFAF; font-weight: bold;">print</span><span style="color: #DCDCCC;">(</span>lsb.reveal<span style="color: #BFEBBF;">(</span><span style="color: #CC9393;">"./logo-secret.png"</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org1b6e32f">
+<h2 id="org1b6e32f">Muchas gracias</h2>
+<img src="logo.png" alt="Python Logo" style="background:none; border:none; box-shadow:none;" height="300px" width="300px">
+<br />
+<a target="_blank" href="https://twitter.com/python_alc"><i class="fa fa-twitter fa-lg"></i> @python_alc</a>
+||
+<a target="_blank" href="https://telegram.me/python_alc"><i class="fa fa-telegram fa-lg"></i> @python_alc</a>
+||
+<a target="_blank" href="https://www.meetup.com/es-ES/python_alc/"><i class="fa fa-meetup fa-lg"></i> python_alc</a>
+<br />
+<a target="_blank" href="mailto:pyalicante@gmail.com"><i class="fa fa-envelope fa-lg"></i> pyalicante@gmail.com</a>
+<br />
+</section>
+</section>
+</div>
+</div>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: false,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
